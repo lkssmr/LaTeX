@@ -1,0 +1,120 @@
+\documentclass[11pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[]{babel}
+\usetheme{Copenhagen}
+\definecolor{theme}{HTML}{383e79}
+\definecolor{term}{HTML}{009b8e}
+\definecolor{termref}{HTML}{008080}
+\definecolor{correct}{HTML}{383e79}
+\usepackage{tikz, pgfplots, amsmath, amsthm, amssymb}
+\usetikzlibrary{patterns}
+
+\begin{document}
+	\author{Lukas Semrau \\ \href{mailto:mail@lukas-semrau.de}{\texttt{mail@lukas-semrau.de}}}
+	\title{Einführung in \LaTeX und Tik\textit Z}
+	%\subtitle{}
+	%\logo{}
+	\institute{Bernhard-Strigel-Gymnasium}
+	%\date{}
+	%\subject{}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{navigation symbols}{}
+	
+	\begin{frame}
+		Eine lineare Funktion besitzt den Funktionsterm $f:x\mapsto mx+t$. Die Steigung $m$ wird durch die Gleichung \begin{align}
+			m&=\frac{\Delta y}{\Delta x} = \frac{f(b)-f(a)}{b-a}
+		\end{align} definiert.
+		
+		\begin{center}
+			\begin{tikzpicture}
+				\begin{axis}[
+					x=1cm,y=1cm,
+					axis lines=middle,
+					ymajorgrids=true,
+					xmajorgrids=true,
+					xmin=-1,
+					xmax=5,
+					ymin=-1,
+					ymax=4,
+					xtick={2,4},
+					xticklabels={\color{theme} $a$, \color{theme} $b$},
+					ytick={2,3},
+					yticklabels={\color{theme} $f(a)$, \color{theme} $f(b)$}]
+					%Below the red parabola is defined
+					\addplot [
+					domain=1.9:5, 
+					samples=100, 
+					color=black,
+					]{1/2*x+1};
+					\addplot [
+					domain=-1:1.05, 
+					samples=100, 
+					color=black,
+					]{1/2*x+1};
+					
+					\draw[color = theme,fill = theme!30, line width = 1pt] (axis cs:2,2) -- (axis cs:4,2) -- (axis cs:4,3) -- (axis cs:2,2);
+					\draw [fill = black, color = black] (axis cs:4,3) circle (1pt) node[above left]{$B(b\mid f(b)$};
+					
+					\draw [fill = black, color = black] (axis cs:2,2) circle (1pt) node[below, xshift = -0.1cm]{$A(a\mid f(a)$};
+					
+					\draw [fill = black, color = black] (axis cs:4,2) node[below right]{$C$};
+					
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Warum sollte man \LaTeX~benutzen?}
+		\begin{itemize}
+			\item hochwertige, professionelle Arbeiten
+			\item schöner, sauberer Formelsatz
+			\item einheitliche Formatierung
+			\item Fokus liegt auf dem Inhalt
+		\end{itemize}
+	\end{frame}
+	\begin{frame}{Befehle im Mathematikmodus}
+		\begin{table}[h]
+			\centering
+			\begin{tabular} {l c c} \hline \hline 
+				Ausdruck & Befehl & Ergebnis \\ \hline
+				Bruch & \texttt{$\backslash$frac\{a\}\{b\}} & $\frac ab$ \\
+				Wurzel & \texttt{$\backslash$sqrt[b]\{a\}} & $\sqrt[b]a$\\ Operatoren &\texttt{$\backslash$sin x}& $\sin x$ \\ >>mal-Punkt<< & \texttt{a$\backslash$cdot b} & $a\cdot b$\\ \hline \hline
+		\end{tabular}
+		\end{table}
+	\end{frame}
+	\begin{frame}{Das Haus vom Nikolaus}
+		\begin{center}
+			\begin{tikzpicture}[scale = 2]
+			\draw (0,0) -- (0,1) -- (1,1) -- (1,0) -- (0,0) -- (1,1);
+			\draw[blue, line width = 1pt] (1,0) -- (0,1);
+			\draw[red, dashed] (0,1) -- (0.5, 2) node [above]{Spitze} -- (1,1);
+		\end{tikzpicture}
+		\end{center}	
+	\end{frame}
+\begin{frame}{Das Haus vom Nikolaus mit Kuppel}
+	\begin{center}
+		\begin{tikzpicture}[scale = 2]
+			\draw[fill = black!30!white] (0,0) -- (0,1) -- (1,1) -- (1,0) -- (0,0) -- (1,1);
+			\draw[blue, line width = 1pt] (1,0) -- (0,1);
+			\draw[red, dashed] (0,1) -- (0.5, 2)  -- (1,1);
+			\draw[orange, fill = orange] (0.5,2) circle (0.5);
+		\end{tikzpicture}
+	\end{center}	
+\end{frame}
+\begin{frame}{Winkel}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[fill = red!30!white] (0,0) -- (1,0) arc[radius = 1, start angle = 0, end angle = 60] node[yshift = -10]{$\alpha$} -- (0,0) -- cycle;
+			\draw (0,0) --(60: 3) (0,0) -- (3,0);
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+\end{document}
